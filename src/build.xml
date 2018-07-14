@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<project name="Minesweeper" default="compile" basedir="../">
+
+    <property name="src.dir" value="src"/>
+    <property name="build.dir" value="build"/>
+    <property name="src.resources" value="src\ru\nsu\ccfit\berdov\minesweeper\resources"/>
+    <property name="build.resources" value="build\ru\nsu\ccfit\berdov\minesweeper\resources"/>
+
+    <target name="clean" description="Removes">
+        <delete dir="${build.dir}"/>
+    </target>
+
+    <target name="compile" depends="clean" description="Create jar-file">
+        <mkdir dir="${build.dir}"/>
+        <javac srcdir="${src.dir}" destdir="${build.dir}">
+        </javac>
+        <copy todir="${build.resources}">
+            <fileset dir="${src.resources}"/>
+        </copy>
+        <jar jarfile="Minesweeper.jar" manifest="manifest.mf">
+            <fileset dir="${build.dir}"/>
+        </jar>
+    </target>
+
+</project>
